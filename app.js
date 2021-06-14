@@ -106,7 +106,7 @@ app.post('/login', async function(req, res){
 })
 
 
-app.get("/todo",isAuth, (req, res) => {
+app.get("/todo", (req, res) => {
   if(!req.session.list){
     req.session.list =[]
   }
