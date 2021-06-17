@@ -106,13 +106,16 @@ app.post('/login', async function(req, res){
 })
 
 
-app.get("/todo", (req, res) => {
+app.get("/todo",isAuth, (req, res) => {
   if(!req.session.list){
     req.session.list =[]
   }
+  if(!req.session.userId){
+    req.session.userId = 1
+  }
   var a = req.session.list
-  console.log(a)
-  res.render('todo',{a});
+  var usr = req.session.userId
+  res.render('todo',{a,usr});
 })
 
 app.post("/todo", (req, res) => {
